@@ -25,7 +25,7 @@ export class HeroSearchComponent implements OnInit {
   }
   ngOnInit(): void {
       var self = this;
-      console.log(self.heroes);
+      //console.log(self.heroes);
     this.heroes = this.searchTerms
       .debounceTime(300)        // wait for 300ms pause in events
       .distinctUntilChanged()   // ignore if next search term is same as previous
@@ -33,14 +33,14 @@ export class HeroSearchComponent implements OnInit {
         // return the http search observable
         ? this.heroSearchService.search(term)
         // or the observable of empty heroes if no search term
-        : []
+        :  []
         )
       .catch(error => {
         // TODO: real error handling
         console.log(error);
         return [];
       });
-     console.log(this.heroes);
+     //console.log(this.heroes);
   }
   gotoDetail(hero: Hero): void {
     let link = ['/detail', hero.id];

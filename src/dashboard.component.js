@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
   heroes: Hero[] = [];
 
   constructor(heroService: HeroService) {
-      console.log(heroService);
+      //console.log(heroService);
       this.heroService = heroService;
   }
 
