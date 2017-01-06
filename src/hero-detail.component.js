@@ -12,22 +12,26 @@ import { HeroService }  from './hero.service';
   styleUrls: [ 'hero-detail.component.css' ]
 })
 export class HeroDetailComponent implements OnInit {
-  hero: Hero;
+    hero: Hero;
 
-  constructor(heroService: HeroService,route: ActivatedRoute,location: Location) {
-      this.heroService = heroService;
-      this.route = route;
-      this.location = location;
+    constructor(heroService: HeroService,route: ActivatedRoute,location: Location) {
+        this.heroService = heroService;
+        this.route = route;
+        this.location = location;
+    }
 
-  }
+    ngOnInit(): void {
+        this.route.params
+            .switchMap((params: Params) => this.heroService.getHero(+params['id']))
+            .subscribe(hero => this.hero = hero);
+    }
 
-  ngOnInit(): void {
-    this.route.params
-      .switchMap((params: Params) => this.heroService.getHero(+params['id']))
-      .subscribe(hero => this.hero = hero);
-  }
+    goBack(): void {
+        this.location.back();
+    }
 
-  goBack(): void {
-    this.location.back();
-  }
+    save(): void {
+        this.heroService.update(this.hero)
+        .then(() => this.goBack());
+    }
 }

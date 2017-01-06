@@ -15,14 +15,26 @@ const gutil  = require('gulp-util');
 const vendors = [
     'babel-polyfill',
     'zone.js/dist/zone',
+    'rxjs/add/observable/of',
+    'rxjs/add/observable/throw',
+    'rxjs/add/operator/catch',
+    'rxjs/add/operator/debounceTime',
+    'rxjs/add/operator/distinctUntilChanged',
+    'rxjs/add/operator/do',
+    'rxjs/add/operator/filter',
     'rxjs/add/operator/map',
     'rxjs/add/operator/switchMap',
+    'rxjs/add/operator/toPromise',
+    'rxjs/Observable',
+    'rxjs/Subject',
     '@angular/core',
+    '@angular/http',
     '@angular/forms',
     '@angular/platform-browser',
     '@angular/platform-browser-dynamic',
     '@angular/router',
-    '@angular/common'
+    '@angular/common',
+    'angular-in-memory-web-api'
 ];
 
 //Add vender.js support files from angular, rxjs, babel-polyfill, zone

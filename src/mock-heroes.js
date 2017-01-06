@@ -1,3 +1,4 @@
+//leave out for testing...
 import { Hero } from './hero';
 
 export const HEROES: Hero[] = [
