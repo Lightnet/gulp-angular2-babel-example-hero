@@ -62,3 +62,8 @@ const vendors = [
 Credits:
  * https://github.com/shuhei/babel-angular2-app/blob/master/src/index.html
  * http://blog.revathskumar.com/2016/02/browserify-separate-app-and-vendor-bundles.html
+ * http://stackoverflow.com/questions/33379851/how-to-load-rxjs-in-a-minimal-angular-2-app-using-systemjs
+ *
+ 
+ 
+ 
