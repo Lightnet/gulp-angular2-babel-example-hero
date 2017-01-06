@@ -16,6 +16,7 @@ const vendors = [
     'babel-polyfill',
     'zone.js/dist/zone',
     'rxjs/add/operator/map',
+    'rxjs/add/operator/switchMap',
     '@angular/core',
     '@angular/forms',
     '@angular/platform-browser',
@@ -47,7 +48,7 @@ gulp.task('build:vendor', () => {
 });
 
 gulp.task('css:copy', () => {
-  return gulp.src(['src/layout-default-latest.css',
+  return gulp.src(['src/*.css',
     ])
     .pipe(gulp.dest('public'));
 });
@@ -63,12 +64,12 @@ gulp.task('js:copy', () => {
 
 //development index.html
 gulp.task('html:copy', () => {
-  return gulp.src(['src/index.html'])
+  return gulp.src(['src/*.html'])
     .pipe(gulp.dest('public'));
 });
 
 //gulp.task('copy',['html:copy','js:copy','css:copy']);
-gulp.task('copy',['html:copy']);
+gulp.task('copy',['html:copy','css:copy']);
 
 //build single file
 gulp.task('build', () => {
