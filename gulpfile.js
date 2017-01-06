@@ -15,12 +15,13 @@ const gutil  = require('gulp-util');
 const vendors = [
     'babel-polyfill',
     'zone.js/dist/zone',
-    '@angular/platform-browser-dynamic',
+    'rxjs/add/operator/map',
     '@angular/core',
-    '@angular/common',
+    '@angular/forms',
     '@angular/platform-browser',
+    '@angular/platform-browser-dynamic',
     '@angular/router',
-    'rxjs/add/operator/map'
+    '@angular/common'
 ];
 
 //Add vender.js support files from angular, rxjs, babel-polyfill, zone
@@ -52,7 +53,7 @@ gulp.task('css:copy', () => {
 });
 
 gulp.task('js:copy', () => {
-  return gulp.src(['src/babylon.min.js',
+  return gulp.src([
     './src/jquery.min.js',
     './src/jquery-ui.min.js',
     './src/jquery.layout.min.js'
@@ -66,12 +67,13 @@ gulp.task('html:copy', () => {
     .pipe(gulp.dest('public'));
 });
 
-gulp.task('copy',['html:copy','js:copy','css:copy']);
+//gulp.task('copy',['html:copy','js:copy','css:copy']);
+gulp.task('copy',['html:copy']);
 
 //build single file
 gulp.task('build', () => {
   const b = browserify('src/index.js', { debug: true })
-    .ignore(['./src/babylon.min.js','./src/jquery.js','./src/jquery-ui.min.js','./src/jquery.layout.min.js'])
+    //.ignore(['./src/jquery.js','./src/jquery-ui.min.js','./src/jquery.layout.min.js'])
     .external(vendors) // Specify all vendors as external source
     .transform(babelify);
   return bundle(b);
@@ -79,10 +81,9 @@ gulp.task('build', () => {
 
 gulp.task('watch:index.js', () => {
   const b = browserify(['src/index.js'], assign({ debug: true }, watchify.args))
-    .ignore('./src/babylon.min.js')
-    .ignore('./src/jquery.min.js')
-    .ignore('./src/jquery-ui.min.js')
-    .ignore('./src/jquery.layout.min.js')
+    //.ignore('./src/jquery.min.js')
+    //.ignore('./src/jquery-ui.min.js')
+    //.ignore('./src/jquery.layout.min.js')
     .external(vendors) // Specify all vendors as external source
     .transform(babelify);
   const w = watchify(b)

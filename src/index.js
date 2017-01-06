@@ -5,7 +5,7 @@ import 'zone.js/dist/zone';
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { AppModule } from './app';
+import { AppModule } from './HeroesComponent';
 
 platformBrowserDynamic().bootstrapModule(AppModule);
 
